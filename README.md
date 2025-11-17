@@ -11,6 +11,11 @@ A provably fair Plinko game built with Next.js, TypeScript, and Prisma.
 
 2. **Create `.env` file:**
    ```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/plinko?schema=public"
+   ```
+   
+   For local development with SQLite (optional):
+   ```env
    DATABASE_URL="file:./dev.db"
    ```
 
@@ -36,7 +41,7 @@ API Routes (/api/rounds, /api/verify)
     ↓
 Business Logic (Crypto, PRNG, Plinko Engine)
     ↓
-Database (Prisma/SQLite)
+Database (Prisma/PostgreSQL)
 ```
 
 **Key Files:**
