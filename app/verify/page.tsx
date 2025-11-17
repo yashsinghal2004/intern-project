@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import PlinkoBoard from '@/components/PlinkoBoard';
 
-export default function VerifyPage() {
+function VerifyPageContent() {
   const searchParams = useSearchParams();
   const roundIdFromUrl = searchParams.get('roundId');
   
@@ -600,6 +600,18 @@ export default function VerifyPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function VerifyPage() {
+  return (
+    <Suspense fallback={
+      <div style={{ minHeight: '100vh', padding: '20px', background: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ color: '#ffffff', fontSize: '18px' }}>Loading...</div>
+      </div>
+    }>
+      <VerifyPageContent />
+    </Suspense>
   );
 }
 
